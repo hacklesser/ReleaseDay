@@ -1,0 +1,11 @@
+CREATE TABLE t_user (
+	id BIGINT PRIMARY KEY AUTO_INCREMENT,
+	username VARCHAR(254) NOT NULL UNIQUE,
+	password VARCHAR(254) NOT NULL,
+	email VARCHAR(254) UNIQUE,
+	status INT DEFAULT 1,
+	validate_code VARCHAR(254),
+	register_time VARCHAR(254),
+	salt VARCHAR(254),
+	role VARCHAR(254)
+);

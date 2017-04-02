@@ -1,0 +1,45 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.2.RELEASE'
+	}
+	repositories {
+		maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenLocal()
+	maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+}
+
+
+dependencies {
+	compile(
+			'org.springframework.boot:spring-boot-starter',
+			'org.springframework.boot:spring-boot-starter-web',
+			'org.springframework:spring',
+			// database组件
+			'org.springframework.boot:spring-boot-starter-data-jpa',
+			'mysql:mysql-connector-java',
+			// flyway组件-数据库版本管理工具
+			'org.flywaydb:flyway-core',
+			// dubbo组件 - 分布式及负载均衡
+			'com.github.sgroschupf:zkclient:0.1',
+			'com.alibaba:dubbo:2.5.3',
+			// zookeeper组件 - 配合duboo组分布式
+			// springboot mail组件 - 发送邮件
+			'org.springframework.boot:spring-boot-starter-mail:1.5.1.RELEASE'
+			
+	)
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
