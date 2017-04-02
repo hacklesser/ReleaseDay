@@ -1,0 +1,6 @@
+/application.properties
+/com/
+/config/
+/dubbo-consumer.xml
+/logback.xml
+/templates/
