@@ -62,7 +62,7 @@ public class JsonWebToken {
 					return resultMsg;
 				}
 			}
-
+			
 			// 拼装accessToken
 			String accessTokenString = JwtHelper.createJWT(loginPara.getUsername(), String.valueOf(userInfo.getUsername()),
 					userInfo.getRole(), audienceConf.getClientId(), audienceConf.getName(), audienceConf.getExpiresSecond() * 1000,

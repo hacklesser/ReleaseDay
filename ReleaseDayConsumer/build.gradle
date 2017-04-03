@@ -32,6 +32,7 @@ dependencies {
     	'org.springframework.boot:spring-boot-starter-web',
     	'org.springframework:spring',
     	'org.springframework:spring-jdbc',
+    	'org.springframework.boot:spring-boot-starter-jetty',
 	    // tag::actuator[]
 	    'org.springframework.boot:spring-boot-starter-actuator',
 	    'org.springframework.boot:spring-boot-starter-aop',
