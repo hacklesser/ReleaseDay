@@ -33,8 +33,6 @@ public enum ResultStatusCode {
 		this.code = code;
 	}
 
-
-
 	public String getMsg() {
 		return Msg;
 	}

@@ -52,15 +52,23 @@ public class UserRegisterController {
 		ResultMsg resultMsg = null;
 		// TODO 将需要隐藏不让用户查看的值抹除
 
-		// 发送验证邮件
-		// 邮件内容
-		StringBuffer content = new StringBuffer("点击下面链接激活账号，48小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！\n");
-		content.append("http://localhost:8070/sbprdc/register/user/validateUser?email=");
-		content.append(userInfoCoEntity.getEmail());
-		content.append("&validateCode=");
-		content.append(userInfoCoEntity.getValidateCode());
-
-		emailPushService.sendRegisterEmail(userInfoCoEntity.getEmail(), "测试网站验证激活测试邮件", content.toString());
+		
+		Thread thread = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				// 发送验证邮件
+				// 邮件内容
+				StringBuffer content = new StringBuffer("点击下面链接激活账号，48小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！\n");
+				content.append("http://localhost:8070/sbprdc/register/user/validateUser?email=");
+				content.append(userInfoCoEntity.getEmail());
+				content.append("&validateCode=");
+				content.append(userInfoCoEntity.getValidateCode());
+				
+				emailPushService.sendRegisterEmail(userInfoCoEntity.getEmail(), "测试网站验证激活测试邮件", content.toString());
+			}
+		});
+		thread.start();
 		
 		if (returnUserInfo != null) {
 			resultMsg = new ResultMsg(ResultStatusCode.OK.getCode(), ResultStatusCode.OK.getMsg(), "账号注册成功，请在期限内验证邮箱！");
